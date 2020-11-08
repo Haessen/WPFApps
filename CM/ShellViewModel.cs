@@ -1,30 +1,66 @@
+using Caliburn.Micro;
 using System.Windows;
 
 namespace CM
 {
-    public class ShellViewModel : Caliburn.Micro.PropertyChangedBase, IShell
+    public class ShellViewModel : PropertyChangedBase, IShell
     {
-        public string Data { get; set; } = "Hello";
+        /*------------------------------------------ Fields ------------------------------------------*/
+        private string _firstName = "Óà";
+        private string _lastName = "îñºè";
 
-        public void Test()
+        /*---------------------------------------- Properties ----------------------------------------*/
+        public string FullName => $"{FirstName} {LastName}";
+        public string FirstName
         {
-            MessageBox.Show("It's a Button.");
-        }
-
-        private string _dataTest = "Hello";
-
-        public string DataTest
-        {
-            get { return _dataTest; }
+            get { return _firstName; }
             set
             {
-                if (_dataTest == value) { return; }
-                _dataTest = value;
-                NotifyOfPropertyChange(() => DataTest);
+                if (_firstName == value) { return; }
+                _firstName = value;
+                NotifyOfPropertyChange(() => FirstName);
+                NotifyOfPropertyChange(() => FullName);
+            }
+        }
+        public string LastName
+        {
+            get { return _lastName; }
+            set
+            {
+                if (_lastName == value) { return; }
+                _lastName = value;
+                NotifyOfPropertyChange(() => LastName);
+                NotifyOfPropertyChange(() => FullName);
             }
         }
 
+        /*----------------------------------- Dependency Properties ----------------------------------*/
+
+        /*--------------------------------------- Constructors ---------------------------------------*/
+
+        /*-------------------------------------- Public Methods --------------------------------------*/
+        public void Test(string firstname, string lastname)
+        {
+            FirstName = null;
+            LastName = null;
+        }
+        public bool CanTest(string firstname, string lastname)
+        {
+            return !string.IsNullOrWhiteSpace(firstname) || !string.IsNullOrWhiteSpace(lastname);
+        }
+
+        /*-------------------------------------- Private Methods -------------------------------------*/
+
+
+
+
+
+
+
+
+
+
     }
 
-    
+
 }
