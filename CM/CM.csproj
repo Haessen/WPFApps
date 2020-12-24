@@ -71,6 +71,7 @@
     <Compile Include="IShell.cs" />
     <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\Teacher.cs" />
     <Compile Include="ShellViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
